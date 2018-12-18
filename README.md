@@ -6,27 +6,24 @@ FeathersJS configuration for can-query-logic
 
 ## Usage
 
-### ES6 use
+Install:
 
-With StealJS, you can import this module directly in a template that is autorendered:
-
-```js
-import plugin from 'feathers-query-logic';
+```
+npm i feathers-query-logic
 ```
 
-### CommonJS use
 
-Use `require` to load `feathers-query-logic` and everything else
-needed to create a template that uses `feathers-query-logic`:
+Import this and add to your connections/models:
 
 ```js
-var plugin = require("feathers-query-logic");
-```
+import feathersQueryLogic from "feathers-query-logic";
+import {realtimeRestModel, QueryLogic, DefineMap} from "can";
 
-### Standalone use
+const Type = DefineMap.extend( ... )
 
-Load the `global` version of the plugin:
 
-```html
-<script src='./node_modules/feathers-query-logic/dist/global/feathers-query-logic.js'></script>
+realtimeRestModel({
+  Map: Type,
+	queryLogic: new QueryLogic(Type, feathersQueryLogic)
+})
 ```
