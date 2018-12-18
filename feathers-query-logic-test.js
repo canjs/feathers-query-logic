@@ -17,6 +17,30 @@ QUnit.test('toQuery', function(){
         $populate: "foo",
         page: {start: 10, end: 19},
         filter: {complete: true}
+	});
+	
+	// Test for $or
+    query = feathersQueryLogic.toQuery({
+        $sort: {data: 1},
+        $limit: 10,
+		$skip: 10,
+		$or: [{
+			name: "matt"
+		}, {
+			name: "justin"
+		}]
+    });
+
+    QUnit.deepEqual(query, {
+        sort: "data",
+        page: {start: 10, end: 19},
+        filter: {
+			$or: [{
+				name: "matt"
+			}, {
+				name: "justin"
+			}]
+		}
     });
 });
 
@@ -34,5 +58,29 @@ QUnit.test('toParams', function(){
         $limit: 10,
         $skip: 10,
         complete: true
+    });
+
+	// Test for $or
+	query = feathersQueryLogic.toParams({
+        sort: "data",
+        page: {start: 10, end: 19},
+        filter: {
+			$or: [{
+				name: "matt"
+			}, {
+				name: "justin"
+			}]
+		}
+    });
+
+    QUnit.deepEqual(query, {
+        $sort: {data: 1},
+        $limit: 10,
+        $skip: 10,
+        $or: [{
+			name: "matt"
+		}, {
+			name: "justin"
+		}]
     });
 });

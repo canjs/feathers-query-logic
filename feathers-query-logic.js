@@ -29,7 +29,11 @@ module.exports = {
             };
             delete special.$limit;
             delete special.$skip;
-        }
+		}
+		if (special.$or) {
+			filter.$or = special.$or;
+			delete special.$or;
+		}
         for(var specialKey in special) {
             query[specialKey] = special[specialKey];
         }
@@ -60,8 +64,12 @@ module.exports = {
         }
         if(params.filter) {
             var filter = params.filter;
-            delete params.filter;
-            Object.assign(params, filter);
+			delete params.filter;
+			if (filter.$or) {
+				params.$or = filter.$or;
+			} else {
+				Object.assign(params, filter);
+			}
         }
         return params;
     }
