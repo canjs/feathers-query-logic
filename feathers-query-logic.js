@@ -30,6 +30,10 @@ module.exports = {
 			delete special.$limit;
 			delete special.$skip;
 		}
+		if (special.$select) {
+			filter.$select = special.$select;
+			delete special.$select;
+		}
 		if (special.$or) {
 			filter.$or = special.$or;
 			delete special.$or;
