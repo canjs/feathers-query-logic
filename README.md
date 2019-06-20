@@ -1,6 +1,6 @@
 # feathers-query-logic
 
-[![Build Status](https://travis-ci.org/canjs/feathers-query-logic.svg?branch=master)](https://travis-ci.org/canjs/feathers-query-logic)
+[![Build Status](https://travis-ci.org/canjs/feathers-query-logic.svg?branch=master)](https://travis-ci.org/canjs/feathers-query-logic) [![Greenkeeper badge](https://badges.greenkeeper.io/canjs/feathers-query-logic.svg)](https://greenkeeper.io/)
 
 FeathersJS configuration for can-query-logic
 
