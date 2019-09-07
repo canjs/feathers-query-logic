@@ -14,12 +14,12 @@ module.exports = {
 		}
 		query.filter = filter;
 
-		var filterProp = Object.keys(query.filter)
+		var filterProp = Object.keys(query.filter);
 		filterProp.forEach(item => {
 			if (typeof query.filter[item] === 'object' && query.filter[item].$search) {
-				delete query.filter[item]
+				delete query.filter[item];
 			}
-		})
+		});
 		if (special.$sort) {
 			var sortProp = Object.keys(special.$sort)[0],
 				val = special.$sort[sortProp];
