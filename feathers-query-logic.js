@@ -15,7 +15,7 @@ module.exports = {
 		query.filter = filter;
 
 		var filterProp = Object.keys(query.filter);
-		filterProp.forEach(item => {
+		filterProp.forEach(function(item) {
 			if (typeof query.filter[item] === 'object' && query.filter[item].$search) {
 				delete query.filter[item];
 			}
